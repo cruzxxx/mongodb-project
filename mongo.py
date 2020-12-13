@@ -27,7 +27,9 @@ conn = mongo_connect(MONGO_URI)
 coll = conn[DATABASE][COLLECTION]
 
 # find all items in the celebrities collection, it will return a mongodb object called "Cursor"
-documents = coll.find()
+coll.update_many({"nationality": "british"}, {"$set": {"hair_color": "maroon"}})
+
+documents = coll.find({"nationality": "british"})
 
 # iterate through data
 for doc in documents:
